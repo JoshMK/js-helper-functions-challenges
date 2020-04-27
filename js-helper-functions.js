@@ -36,3 +36,12 @@ function getNumberMatchingStringsByQuery(stringsArray, queriesArray) {
     });
     return matchesArray;
 }
+
+//createObjectWithRemovedProperty - returns an object from an existing object with a specified property removed
+function createObjectWithRemovedProperty(oldObj, prop) {
+let newObjMinusProp = {...oldObj};
+if (newObjMinusProp.hasOwnProperty(prop)) {
+    delete newObjMinusProp[prop];        
+}
+return newObjMinusProp;
+}
