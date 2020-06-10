@@ -44,3 +44,14 @@ function getNumberofCharsFromRepeatedSubstring(s, n) {
     }
     return numChars;
 }
+
+//rotateArrayLeft - returns a new array with its contents shifted left n times
+function rotateArrayLeft(array, n) {
+    let newArray = array;
+    for (let i = 0; i < d; i++) {
+        let newArrayLastIndex = newArray.shift();
+        newArray.push(newArrayLastIndex);   
+    }
+    return newArray;
+    }
+    
