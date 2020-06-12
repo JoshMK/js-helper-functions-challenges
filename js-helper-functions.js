@@ -29,14 +29,14 @@ function createObjectWithRemovedProperty(oldObj, prop) {
 }
 
 //getNumberofCharsFromRepeatedSubstring - returns the number of characters from the first n characters of a substring repeated n times
-function getNumberofCharsFromRepeatedSubstring(s, n) {
+function getNumberofCharsFromRepeatedSubstring(string, n) {
     const CHAR = 'a';
     let numChars = 0;
     let combinedCharString = "";
     for (let i = 0; i < n; i++) {
-        combinedCharString += s;
+        combinedCharString += string;
     }
-    const COMBINED_CHAR_SUBSTRING = combinedCharString.substring(0,n);
+    const COMBINED_CHAR_SUBSTRING = combinedCharString.substring(0, n);
     for (const LETTER of COMBINED_CHAR_SUBSTRING) {
         if (LETTER === CHAR) {
             numChars++;
@@ -48,10 +48,21 @@ function getNumberofCharsFromRepeatedSubstring(s, n) {
 //rotateArrayLeft - returns a new array with its contents shifted left n times
 function rotateArrayLeft(array, n) {
     let newArray = array;
-    for (let i = 0; i < d; i++) {
+    for (let i = 0; i < n; i++) {
         let newArrayLastIndex = newArray.shift();
         newArray.push(newArrayLastIndex);   
     }
     return newArray;
     }
+
+//rotateArrayLeft - returns a new array with its contents shifted left n times
+function camelCase(sentence) {
+    let sentenceArray = sentence.split(' ');
+    sentenceArray.forEach((word, i) => {
+        const NEW_FIRST_LETTER = word.charAt(0).toUpperCase();
+        const REST_OF_WORD = word.substring(1);
+        sentenceArray[i] = NEW_FIRST_LETTER + REST_OF_WORD;
+    });
+    return sentenceArray.join(' ');
+}
     
