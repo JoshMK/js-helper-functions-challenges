@@ -63,16 +63,17 @@ function camelCase(sentence) {
   return sentenceArray.join(" ");
 }
 
-function getConsecutiveNumbersFromArray(array, maxNumberGroup = 3) {
+//getConsecutiveNumbersFromArray - returns the number of consecutive values by group number from an array
+function getConsecutiveEntriesFromArray(array, maxNumberGroup = 3) {
   let matches = 0;
-  let uniqueNumbers = Array.from(new Set(array)); //get unique numbers
+  let uniqueNumbers = Array.from(new Set(array)); //get unique values
   for (let i = 0; i < uniqueNumbers.length; i++) {
-    //compare each unique number to the array as a whole
+    //compare each unique value to the array as a whole
     for (let j = 0; j < array.length; j++) {
       if (uniqueNumbers[i] === array[j]) {
         matches++;
         if (matches === maxNumberGroup) {
-          return `${maxNumberGroup} consecutive numbers found at array index ${j}`;
+          return `${maxNumberGroup} consecutive entries found at array index ${j}`;
         }
       } else {
         matches = 0;
@@ -80,5 +81,16 @@ function getConsecutiveNumbersFromArray(array, maxNumberGroup = 3) {
     }
     j = 0;
   }
-  return "No consecutive numbers found.";
+  return "No consecutive entries found.";
+}
+
+//getAlternatingCharacters - returns the number of of alternative characters in a two character string
+function getAlternatingCharactersFromString(string) {
+  let chars = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (i < string.length - 1 && string[i] === string[i + 1]) {
+      chars += 1;
+    }
+  }
+  return chars;
 }
