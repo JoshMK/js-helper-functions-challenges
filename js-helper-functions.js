@@ -52,8 +52,8 @@ function rotateArrayLeft(array, n) {
   return newArray;
 }
 
-//rotateArrayLeft - returns a new array with its contents shifted left n times
-function camelCase(sentence) {
+//camelCase - returns a sentence with the first letters of each word capitalized
+function titleCase(sentence) {
   let sentenceArray = sentence.split(" ");
   sentenceArray.forEach((word, i) => {
     const NEW_FIRST_LETTER = word.charAt(0).toUpperCase();
@@ -93,4 +93,22 @@ function getAlternatingCharactersFromString(string) {
     }
   }
   return chars;
+}
+
+//fradulentActivityNotifications - returns a number of notifications depening on whether a user's expenditure over a period of days was double their median expenditure.
+function fradulentActivityNotifications(expenditure, d) {
+  let notifications = 0;
+  //get subset of expenditure by days stored
+  let trailingDays = expenditure.slice(0, d).sort((a, b) => (a > b ? 1 : -1));
+  const MEDIAN = Math.floor(trailingDays.length / 2);
+  for (let i = d; i < expenditure.length; i++) {
+    if (expenditure[i] >= trailingDays[MEDIAN] * 2) {
+      notifications++;
+    }
+    //remove last day from array subset, add new item and sort to obtain new median value
+    trailingDays.shift();
+    trailingDays.push([expenditure[i]]);
+    trailingDays.sort((a, b) => (a > b ? 1 : -1));
+  }
+  return notifications;
 }
